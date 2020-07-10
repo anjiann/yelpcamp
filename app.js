@@ -17,8 +17,9 @@ var campgroundRoutes = require("./routes/campgrounds"),
 var seedDB      = require("./seeds")
 // seedDB();
 
-mongoose.connect("mongodb+srv://anjian:yelpcampdemo@cluster0.kap0r.gcp.mongodb.net/yelp_camp?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true})
-// mongoose.connect("mongodb://localhost:27017/yelp_camp", {useNewUrlParser: true, useUnifiedTopology: true})
+const db = "mongodb+srv://anjian:anjian@cluster0.kap0r.mongodb.net/yelpcamp?retryWrites=true&w=majority"
+// const db = "mongodb://localhost:27017/yelp_camp"
+mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true}).then(() => console.log('MongoDB connected...')).catch(err => console.log(err));
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(__dirname + "/public"))
 app.use(methodOverride("_method"))
@@ -48,7 +49,8 @@ app.use("/", indexRoutes)
 app.use("/campgrounds", campgroundRoutes)
 app.use("/campgrounds/:id/comments", commentRoutes)
 
-const port = 3000;
-app.listen(port, function() {
-    console.log("yelpcamp server has started");
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`)
+  console.log('Press Ctrl+C to quit.')
 })

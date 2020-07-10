@@ -1,13 +1,17 @@
 {
   "name": "yelpcamp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple web app with RESTful routes and CRUD database operations",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
   "author": "Andy Jian",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anjiann/yelpcamp.git"
+  },
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
